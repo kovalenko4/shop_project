@@ -3,7 +3,12 @@
 class NewsController
 {
     public function actionIndex(){
-        echo 'NewsController actionIndex';
+        echo 'Список новостей';
+        return true;
+    }
+
+    public function actionView(){
+        echo 'Просмотр одной новости';
         return true;
     }
 }
