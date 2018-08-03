@@ -1,14 +1,33 @@
 <?php
 
-class NewsController
-{
-    public function actionIndex(){
-        echo 'Список новостей';
+include_once ROOT. '/models/News.php';
+
+class NewsController {
+
+    public function actionIndex()
+    {
+
+        $newsList = array();
+        $newsList = News::getNewsList();
+
+        require_once(ROOT . '/views/news/index.php');
+
         return true;
     }
 
-    public function actionView(){
-        echo 'Просмотр одной новости';
+    public function actionView($id)
+    {
+        if ($id) {
+            $newsItem = News::getNewsItemByID($id);
+
+            require_once(ROOT . '/views/news/view.php');
+
+            /*			echo 'actionView'; */
+        }
+
         return true;
+
     }
+
 }
+
